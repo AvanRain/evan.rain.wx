@@ -1,13 +1,73 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="head-wrap" style="background: url({{headerData.list[0].pictureUrl}}) 0 0 no-repeat;background-size: 750rpx 385rpx;">
+  <view class="head-title">{{headerData.list[0].comment[0]}}</view>
+  <view class="tip-box">
+    <view class="tip">
+      <view class="tip-img img1"></view>
+      <view>京东自营</view>
+      <view class="dot"></view>
+    </view>
+    <view class="tip">
+      <view class="tip-img img2"></view>
+      <view>微信送礼</view>
+      <view class="dot"></view>
+    </view>
+    <view class="tip">
+      <view class="tip-img img3"></view>
+      <view>即时祝福</view>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="swiper-box-wrap">
+    <swiper class="swiper-box" autoplay="true" interval="3000" bindchange="changeSwiper">
+      <swiper-item class="swiper-item-wrap" wx:for="{{firstFocusData.list}}" wx:for-item="imageItem" wx:key="index">
+        <view class="swiper-item" bindtap="gotoPages" data-listtype="{{imageItem.comment[0]}}" data-cardtype="{{imageItem.comment[1]}}" data-id="{{imageItem.comment[2]}}">
+          <image class="swiper-image" src="{{imageItem.pictureUrl}}"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view wx:if="{{firstFocusData.list.length > 1}}" class="yep-swiper-dots">
+      <block wx:for="{{firstFocusData.list}}" wx:key="index">
+        <view class="yep-swiper-dot {{index == _currIdx ? 'yep-swiper-dot-curr' : ''}}"></view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<view class="cards-wrap">
+  <view class="wrap-title" wx:for="{{cardData.list}}" wx:for-item="cardItem" wx:key="index">
+    <view class="title">{{cardItem.comment[0]}}</view>
+    <view class="tip">{{cardItem.comment[1]}}</view>
+  </view>
+  <swiper class="cards-swiper-wrap" circular="true" previous-margin="180rpx" next-margin="180rpx" bindchange="changeCardSwiper">
+    <swiper-item class="cards-swiper-item-wrap {{index == _currCardIdx ? 'cards-swiper-item-wrap-curr' : ''}}" wx:for="{{cardData.cardlist.list}}" wx:for-item="cardlistItem" wx:key="index">
+      <view class="cards-swiper-item {{index == _currCardIdx ? 'cards-swiper-item-curr' : ''}}" bindtap="gotoTheme" data-id="{{cardlistItem.comment[0]}}">
+        <image class="cards-swiper-image" src="{{cardlistItem.pictureUrl}}" data-themeid="{{cardlistItem.comment[0]}}"></image>
+        <view class="cards-card-title">{{cardlistItem.comment[1]}}</view>
+      </view>
+    </swiper-item>
+  </swiper>
+</view>
+
+<view class="cards-wrap cards-wrap2">
+  <view class="wrap-title" wx:for="{{cateData.list}}" wx:for-item="cateItem" wx:key="index">
+    <view class="title">{{cateItem.comment[0]}}</view>
+    <view class="tip">{{cateItem.comment[1]}}</view>
+  </view>
+  <view class="cates-list">
+    <tab id="yepcom-tab" tabs="{{categoryList}}" yepc-tabs="{{tabFixed ? 'myyep-tabs myyep-tabs-fixed' : 'myyep-tabs'}}" yepc-tabs-scroll="{{tabFixed ? 'myyep-tabs-scroll myyep-tabs-scroll-fixed' : 'myyep-tabs-scroll'}}" yepc-tab-txt="myyep-tab-txt" yepc-tab-curr="myyep-tab-curr"
+      yepc-tab-panel="myyep-tab-panel" yepc-tabs-bro="{{tabFixed ? 'myyep-tabs-bro' : ''}}" bindtabchange="selectTextTab" data-idx="1">
+      <block wx:for="{{prodGroupList}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx">
+        <view class="card-list" style="{{tabText.currIdx == idx ? 'display:flex': 'display:none'}}">
+          <view class="card-item" wx:for="{{tabItem}}" wx:for-item="product" wx:for-index="idx" bindtap="gotoProduct" data-id="{{product.skuId}}" wx:key="idx">
+            <view class="card-image-wrap">
+              <image class="card-image" src="{{product.image}}"></image>
+            </view>
+            <view class="card-title">{{product.name}}</view>
+            <view class="card-tags"></view>
+            <yepPrice class="card-price" value="{{product.pPrice}}"></yepPrice>
+          </view>
+        </view>
+      </block>
+    </tab>
   </view>
 </view>

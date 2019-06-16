@@ -7,8 +7,8 @@
     "list": [{
       "pagePath": "pages/index/index",
       "text": "首页",
-      "iconPath": "imgs/icon/index.png",
-      "selectedIconPath": "imgs/icon/index.png"
+      "iconPath": "imgs/icon/home.png",
+      "selectedIconPath": "imgs/icon/home_sel.png"
     },{
       "pagePath": "pages/logs/logs",
       "text": "日志",
@@ -19,7 +19,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "彩虹",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

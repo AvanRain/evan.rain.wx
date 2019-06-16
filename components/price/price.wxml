@@ -1,0 +1,55 @@
+
+<view class="yep-price y-price {{_cls}}">
+  <block wx:if="{{_symbol}}">
+    <block wx:if="{{symPos == '' || symPos == 'sub'}}">
+      <view class="sym-sub y-price-symbol">{{_symbol}}</view>
+    </block>
+
+    <block wx:if="{{symPos == 'normal'}}">
+      <view class="sym-normal y-price-symbol">{{_symbol}}</view>
+    </block>
+
+    <block wx:if="{{symPos == 'sup'}}">
+      <view class="sym-sup y-price-symbol">{{_symbol}}</view>
+    </block>
+  </block>
+
+  <block wx:if="{{value}}">
+    <view class="sym-val y-price-val">{{_intVal}}</view>
+  </block>
+
+
+  <block wx:if="{{_floatVal}}">
+    <block wx:if="{{decPos == 'normal'}}">
+      <view class="sym-decimal y-price-dec">.{{_floatVal}}</view>
+    </block>
+    <block wx:if="{{decPos == 'sub' || decPos == ''}}">
+      <view class="sym-decimal sym-decimal-sub y-price-dec">.{{_floatVal}}</view>
+    </block>
+    <block wx:if="{{decPos == 'sup'}}">
+      <view class="sym-decimal sym-decimal-sup y-price-dec">.{{_floatVal}}</view>
+    </block>
+  </block>
+</view>
+
+
+<view wx:if="{{1==0}}" class="container">
+  <view class="yep-price">¥599.00</view>
+  <view class="yep-price">¥<em class="em">599</em>.00</view>
+
+
+  <view classs="yep-price-group">
+    <view class="yep-price-curr">¥599.00</view>
+    <view class="yep-price-old">¥799.00</view>
+  </view>
+
+
+  <view classs="yep-price-group">
+    <view>
+      <view class="yep-price">¥<em class="em">599</em>.00</view>
+      <view class="yep-price-dis">6.0折</view>
+    </view>
+    <view class="yep-price-old">¥799.00</view>
+  </view>
+
+</view>

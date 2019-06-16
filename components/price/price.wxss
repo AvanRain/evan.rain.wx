@@ -1,0 +1,86 @@
+
+.yep-price{
+  font-size: 24rpx;
+  color: #e4393c;
+  font-weight: 700;
+  line-height: 1.3;
+  display: inline-block;
+  padding: 0 6rpx 0 0;
+}
+
+.common{
+  color: #bbb;
+  font-weight: 400;
+}
+
+.del{
+  color: #bbb;
+  text-decoration: line-through;
+}
+
+.del .sym-val, .del .sym-decimal{
+  text-decoration: line-through;
+}
+
+.sym-sub, .sym-normal, .sym-sup{
+  display: inline-block;
+  font-size: 30rpx;
+}
+
+.sym-sub{
+  font-size: 20rpx;
+  padding: 0 6rpx 0 0;
+  /*vertical-align: bottom;*/
+}
+
+.sym-sup{
+  font-size: 20rpx;
+  padding: 0 6rpx 0 0;
+  vertical-align: top;
+}
+
+.sym-val{
+  display: inline-block;
+  font-size: 30rpx;
+}
+
+.sym-decimal{
+  display: inline-block;
+  font-size: 30rpx;
+}
+
+.sym-decimal-sub{
+  font-size: 20rpx;
+}
+
+.sym-decimal-sup{
+  font-size: 20rpx;
+  vertical-align: top;
+}
+
+.yep-price-group{
+  display: block;
+}
+
+.yep-price-curr{
+  display: inline-block;
+  font-size: 24rpx;
+  color: #e4393c;
+  padding: 0 10rpx;
+}
+.yep-price-dis{
+  display: inline-block;
+  border: 1rpx solid #e4393c;
+  border-radius: 2rpx;
+  color: #e4393c;
+  font-size: 20rpx;
+  margin-left: 8rpx;
+  padding: 0 10rpx;
+}
+
+.yep-price-old{
+  padding: 0 10rpx;
+  font-size: 22rpx;
+  color: #686868;
+  text-decoration: line-through;
+}

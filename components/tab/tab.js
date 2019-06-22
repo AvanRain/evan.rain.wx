@@ -47,6 +47,7 @@ Component({
   methods: {
     // 这里是一个自定义方法
     selectTab: function(e) {
+      console.log("aaaa")
       let currIdx = e.currentTarget.dataset.idx;
 
       // 对当前tab数据重置
@@ -89,5 +90,8 @@ Component({
       var myEventOption = { bubbles: true, composed: true } // 触发事件的选项
       this.triggerEvent('tabchange', myEventDetail, myEventOption);
     }
+  },
+  scrolltoupper: function(e){
+    console.log(e)
   }
 });

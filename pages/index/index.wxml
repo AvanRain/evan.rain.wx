@@ -1,20 +1,20 @@
 <!--index.wxml-->
-  <view class="head-wrap" style="background: url({{headerData.list[0].pictureUrl}}) 0 0 no-repeat;background-size: 750rpx 385rpx;">
-  <view class="head-title">{{headerData.list[0].comment[0]}}</view>
+  <view class="head-wrap" style="background: url({{headerData.pictureUrl}}) 0 0 no-repeat;background-size: 750rpx 385rpx;">
+  <view class="head-title">{{headerData.comment}}</view>
   <view class="tip-box">
     <view class="tip">
-      <view class="tip-img img1"></view>
-      <view>京东自营</view>
+      <!-- <view class="tip-img img1"></view> -->
+      <view>京东</view>
       <view class="dot"></view>
     </view>
     <view class="tip">
-      <view class="tip-img img2"></view>
-      <view>微信送礼</view>
+      <!-- <view class="tip-img img2"></view> -->
+      <view>天猫</view>
       <view class="dot"></view>
     </view>
     <view class="tip">
-      <view class="tip-img img3"></view>
-      <view>即时祝福</view>
+      <!-- <view class="tip-img img3"></view> -->
+      <view>导购</view>
     </view>
   </view>
   <view class="swiper-box-wrap">
@@ -38,7 +38,7 @@
     <view class="title">{{cardItem.comment[0]}}</view>
     <view class="tip">{{cardItem.comment[1]}}</view>
   </view>
-  <swiper class="cards-swiper-wrap" circular="true" previous-margin="180rpx" next-margin="180rpx" bindchange="changeCardSwiper">
+  <swiper class="cards-swiper-wrap" autoplay="true" circular="true" previous-margin="180rpx" next-margin="180rpx" bindchange="changeCardSwiper">
     <swiper-item class="cards-swiper-item-wrap {{index == _currCardIdx ? 'cards-swiper-item-wrap-curr' : ''}}" wx:for="{{cardData.cardlist.list}}" wx:for-item="cardlistItem" wx:key="index">
       <view class="cards-swiper-item {{index == _currCardIdx ? 'cards-swiper-item-curr' : ''}}" bindtap="gotoTheme" data-id="{{cardlistItem.comment[0]}}">
         <image class="cards-swiper-image" src="{{cardlistItem.pictureUrl}}" data-themeid="{{cardlistItem.comment[0]}}"></image>

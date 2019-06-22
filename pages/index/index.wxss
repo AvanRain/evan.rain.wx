@@ -119,7 +119,7 @@ page {
 }
 
 .tip-box .tip-img.img1 {
-  background: url(http://www.wanyus.com/uba/jfs/t1/18015/38/1896/648/5c17932eE52aaf87a/d3561f60142be37b.png) no-repeat;
+  /* background: url(/imgs/image/aaaa.jpg) no-repeat; */
   background-size: 24rpx 27rpx;
   margin-right: 10rpx;
   width: 26rpx;
@@ -127,7 +127,7 @@ page {
 }
 
 .tip-box .tip-img.img2 {
-  background: url('http://www.wanyus.com/uba/jfs/t1/19991/25/1884/780/5c17932eE1b0c6e35/14bde026c1c107fa.png') 0 0 no-repeat;
+  /* background: url('/imgs/image/aaaa.jpg') 0 0 no-repeat; */
   background-size: 26rpx 24rpx;
   margin-right: 10rpx;
   width: 26rpx;
@@ -135,7 +135,7 @@ page {
 }
 
 .tip-box .tip-img.img3 {
-  background: url('http://www.wanyus.com/uba/jfs/t1/19758/2/1943/283/5c17932eE34ac3c16/14a57880fbabf844.png') 0 0 no-repeat;
+  /* background: url('/imgs/image/aaaa.jpg') 0 0 no-repeat; */
   background-size: 28rpx 26rpx;
   margin-right: 10rpx;
   width: 28rpx;
@@ -190,7 +190,7 @@ page {
   width: 32rpx;
   height: 14rpx;
   border-radius: 14rpx;
-  background: url('http://www.wanyus.com/uba/jfs/t1/7709/15/9151/559/5c13a18fE7f6facde/48d952558a15ad86.png'), url('http://www.wanyus.com/uba/jfs/t1/24860/15/1591/781/5c13a18fEee30cd29/0cdda086e9360e8f.png');
+  /* background: url('/imgs/image/aaaa.jpg'), url('/imgs/image/aaaa.jpg'); */
   background-size: 8.5rpx 8.5rpx, 14rpx 14rpx;
   background-repeat: no-repeat, no-repeat;
   background-position: left, right;
@@ -204,7 +204,7 @@ page {
   width: 32rpx;
   height: 14rpx;
   border-radius: 14rpx;
-  background: url('http://www.wanyus.com/uba/jfs/t1/7709/15/9151/559/5c13a18fE7f6facde/48d952558a15ad86.png'), url('http://www.wanyus.com/uba/jfs/t1/24860/15/1591/781/5c13a18fEee30cd29/0cdda086e9360e8f.png');
+  /* background: url('/imgs/image/aaaa.jpg'), url('/imgs/image/aaaa.jpg'); */
   background-size: 8.5rpx 8.5rpx, 14rpx 14rpx;
   background-repeat: no-repeat, no-repeat;
   background-position: right, left;
@@ -222,7 +222,7 @@ page {
 
 .wrap-title .more {
   position: absolute;
-  background: url('http://www.wanyus.com/uba/jfs/t1/18794/16/1895/227/5c179b36Eddcbc313/4af7cb079adb15cd.png') 0 0 no-repeat;
+  /* background: url('/imgs/image/aaaa.jpg') 0 0 no-repeat; */
   background-size: 48rpx 48rpx;
   width: 48rpx;
   height: 48rpx;
@@ -347,7 +347,7 @@ page {
   /* width: 32rpx;
   height: 14rpx;
   border-radius: 14rpx;
-  background: url('http://www.wanyus.com/uba/jfs/t1/7709/15/9151/559/5c13a18fE7f6facde/48d952558a15ad86.png'), url('http://www.wanyus.com/uba/jfs/t1/24860/15/1591/781/5c13a18fEee30cd29/0cdda086e9360e8f.png');
+  background: url('/imgs/image/aaaa.jpg'), url('/imgs/image/aaaa.jpg');
   background-size: 8.5rpx 8.5rpx, 14rpx 14rpx;
   background-repeat: no-repeat, no-repeat;
   background-position: right, left;

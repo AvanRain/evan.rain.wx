@@ -44,7 +44,7 @@
     margin-bottom: 20rpx;
     width: 52rpx;
     height: 52rpx;
-    background-image: url(http://www.wanyus.com/uba/jfs/t19033/93/943707955/23978/ce99c6cf/5ab35bd8N1d7801ac.gif)
+    background-image: url(/imgs/image/aaaa.jpg)
 }
 
 .btn {
@@ -378,7 +378,7 @@
   height: 34rpx;
   margin-right: 15rpx;
   margin-left: 28rpx;
-  background: url(https://www.wanyus.com/uba/jfs/t20662/29/2276596986/938/7836381b/5b4d6358N837fbb06.png) no-repeat;
+  background: url(/imgs/image/aaaa.jpg) no-repeat;
   background-size: 28rpx 34rpx;
 }
 
@@ -490,7 +490,7 @@
   margin-bottom: 10rpx;
   width: 60rpx;
   height: 60rpx;
-  background-image: url(http://www.wanyus.com/uba/jfs/t1/1298/22/148/948/5b8fa2e8E7f6fffb1/7d3e5829ed0b495f.png);
+  background-image: url(/imgs/image/aaaa.jpg);
   background-size: 100% 100%;
   animation: loading 1s 0s linear infinite;
 }

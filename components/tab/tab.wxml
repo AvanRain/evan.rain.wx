@@ -17,7 +17,7 @@
   <view>
     <scroll-view class="yep-tabs-scroll yepc-tabs-scroll" scroll-x="true">
       <block wx:for="{{_tabs}}" wx:for-item="itemTab" wx:for-index="itemIdx" wx:key="index">
-        <view class="yep-tab yepc-tab {{itemIdx == _currIdx ? 'curr yepc-tab-curr' : ''}}" bindtap="selectTab" data-idx="{{itemIdx}}" data-id="{{itemTab.id}}">
+        <view id='tab-id-index' class="yep-tab yepc-tab {{itemIdx == _currIdx ? 'curr yepc-tab-curr' : ''}}" bindtap="selectTab" data-idx="{{itemIdx}}" data-id="{{itemTab.id}}" >
           <view class="yep-tab-txt yepc-tab-txt">
             <view class="title">{{itemTab.name}}</view>
           </view>

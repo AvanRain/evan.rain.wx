@@ -4,39 +4,49 @@ const app = getApp()
 
 Page({
   data: {
-    headerData: { "list": [
-      { "pictureUrl":"//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
-      "comment":["彩虹"]}]},
+    headerData:{},
     firstFocusData: {
-      "list": [{
-        "pictureUrl": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+      "list": [
+        {
+        "pictureUrl": "/imgs/image/aaaa.jpg",
         "comment": ["彩虹1", "彩虹2", "彩虹3"]
-      }]},
+        },
+        {
+          "pictureUrl": "/imgs/image/aaaa.jpg",
+          "comment": ["彩虹1", "彩虹2", "彩虹3"]
+        }
+      ]},
     cardData: {
-      "list": [{
-        "pictureUrl": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
-        "comment": ["彩虹1", "彩虹2", "彩虹3"]
-      }],
+      "list": [
+        {
+          "pictureUrl": "/imgs/image/aaaa.jpg",
+          "comment": ["彩虹1", "彩虹2", "彩虹3"]
+        },
+        {
+          "pictureUrl": "/imgs/image/aaaa.jpg",
+          "comment": ["彩虹1", "彩虹2", "彩虹3"]
+        },
+      ],
       "cardlist": {
           "list":[
             {
-            "pictureUrl": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+              "pictureUrl": "/imgs/image/aaaa.jpg",
             "comment": ["彩虹1", "彩虹2", "彩虹3"]
             },
             {
-              "pictureUrl": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+              "pictureUrl": "/imgs/image/aaaa.jpg",
               "comment": ["彩虹1", "彩虹2", "彩虹3"]
             },
             {
-              "pictureUrl": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+              "pictureUrl": "/imgs/image/aaaa.jpg",
               "comment": ["彩虹1", "彩虹2", "彩虹3"]
             },
             {
-              "pictureUrl": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+              "pictureUrl": "/imgs/image/aaaa.jpg",
               "comment": ["彩虹1", "彩虹2", "彩虹3"]
             },
             {
-              "pictureUrl": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+              "pictureUrl": "/imgs/image/aaaa.jpg",
               "comment": ["彩虹1", "彩虹2", "彩虹3"]
             }
           ]
@@ -61,25 +71,25 @@ Page({
       [
         {
           "skuId": "1233456",
-          "image": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+          "image": "/imgs/image/aaaa.jpg",
           "pPrice":"123",
           "name": "彩虹"
         },
         {
           "skuId": "1233456",
-          "image": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+          "image": "/imgs/image/aaaa.jpg",
           "pPrice": "123",
           "name": "彩虹"
         },
         {
           "skuId": "1233456",
-          "image": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+          "image": "/imgs/image/aaaa.jpg",
           "pPrice": "123",
           "name": "彩虹"
         },
         {
           "skuId": "1233456",
-          "image": "//www.wanyus.com/cms/jfs/t1/10383/26/9258/6826/5c3e9d8bE8fe6c345/c5eae008d69b19c3.jpg",
+          "image": "/imgs/image/aaaa.jpg",
           "pPrice": "123",
           "name":"彩虹"
         }
@@ -96,7 +106,80 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  onLoad: function() {
+    this.initIndex()
+  },
+  onShow: function() {
+    // this.initIndex()
+  },
+  initIndex: function() {
+    let obj = this;
+    wx.request({
+      url: app.globalRequestUrl + "/api/index",
+      data: {},
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      success: function (res) {
+        obj.setData({
+          headerData: {
+            "pictureUrl": "/imgs/image/ab0.jpg",
+            "comment": "彩虹"
+          }
+        })
+      },
+      fail: function (e) {
+        // wx.showToast({
+        //   title: '网络信号较差',
+        //   icon: 'loading',
+        //   duration: 3000
+        // });
+        // obj.setData({
+        //   headerData: {
+        //     "pictureUrl": "/imgs/image/ab0.jpg",
+        //     "comment": "彩虹"
+        //   }
+        // })
+      },
+      complete: function () {
+        obj.setData({
+          headerData: {
+            "pictureUrl": "/imgs/image/ab0.jpg",
+            "comment": "彩虹"
+          }
+        })
+      }
+    });
+  },
+  changeCardSwiper: function(e) {
+    this.setData({
+      _currCardIdx: e.detail.current
+    });
+  },
+  onReachBottom: function() {
+    var showTwo = this.selectComponent('#yepcom-tab');
+    // const query = wx.createSelectorQuery();
+    // query.select('#tab-id-index').fields({
+    //   dataset: true
+    // },
+    // function(res){
+    //   console.log(res)
+    // }).exec();
+    let ix = showTwo.data._currIdx;
+    let le = showTwo.data._tabs.length;
+    if (le <= ix+1){
+      ix = -1;
+    }
+    showTwo.setData({
+      _currIdx:ix+1
+    });
+    // console.log(showTwo)
+  },
+  changeSwiper: function(e) {
     
+  },
+  selectTextTab:function(){
+    console.log("abcdd")
   }
 })

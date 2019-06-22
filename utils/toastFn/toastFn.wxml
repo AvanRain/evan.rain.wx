@@ -1,0 +1,6 @@
+<view class="toast-wrap" wx:if="{{isToast}}">
+  <view class="toast {{position}}">
+    <view wx:if="{{iconType}}" class="icon icon-{{iconType}}"></view>
+    <view class="message">{{title}}</view>
+  </view>
+</view>

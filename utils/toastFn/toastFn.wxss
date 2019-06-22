@@ -1,0 +1,76 @@
+/**toast.wxss**/
+
+/*.toast{*/
+	/*position: fixed;*/
+	/*margin: auto;*/
+	/*left: 0;*/
+	/*right: 0;*/
+	/*top: 0;*/
+	/*bottom: 0;*/
+	/*!*width: 60%;*!*/
+	/*!*height: 20%;*!*/
+	/*!*background-color: rgba(97, 98, 100, 0.7);*!*/
+	/*width: 48%;*/
+	/*height: 15%;*/
+	/*padding: 25rpx 0 40rpx;*/
+	/*background-color: rgba(44, 44, 46, 0.7);*/
+	/*border-radius: 15rpx;*/
+	/*z-index: 9999;*/
+	/*text-align: center;*/
+/*}*/
+
+/*icon{*/
+	/*margin-top: 6%;*/
+/*}*/
+
+/*.message{*/
+	/*color: #FFF;*/
+	/*font-size: 30rpx;*/
+	/*margin-top: 2%;*/
+	/*font-family: Microsoft Yahei;*/
+	/*line-height: 40rpx;*/
+/*}*/
+
+.toast-wrap {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 9999;
+	text-align: center;
+}
+.box-top{
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.toast {
+	padding: 25rpx 30rpx 40rpx;
+	background-color: rgba(44, 44, 46, 0.7);
+	border-radius: 15rpx;
+}
+
+.icon {
+	display: inline-block;
+	margin-top: 4%;
+	width: 52rpx;
+	height: 52rpx;
+	background-repeat: no-repeat;
+	background-size: 52rpx 52rpx;
+}
+
+.message{
+	max-width: 580rpx;
+	color: #FFF;
+	font-size: 30rpx;
+	margin-top: 6%;
+	line-height: 1.1;
+	font-family: Microsoft Yahei;
+}

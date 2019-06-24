@@ -60,7 +60,7 @@ Page({
       ]
     },
     _currIdx: 0,
-    // 礼品卡当前播放
+    // 当前播放
     _currCardIdx: 0,
     // 分类list
     tabText: {

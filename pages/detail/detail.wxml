@@ -1,2 +1,229 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<!-- orderdetail.wxml
+
+<view class="container wrap">
+  <view class="notice" wx:if="{{detailStatusArr[0] || detailStatusArr[1] || detailStatusArr[5] || detailStatusArr[3] || detailStatusArr[6]}}">
+    <view class="img"></view>
+    <view wx:if="{{detailStatusArr[0]}}" class="tip">自动退款</view>
+    <view wx:if="{{detailStatusArr[1]}}" class="tip">自动退款</view>
+    <view wx:if="{{detailStatusArr[5]}}" class="tip">请尽快兑换</view>
+    <view wx:elif="{{detailStatusArr[3] || detailStatusArr[6]}}" class="tip">查看订单及物流信息</view>
+    <view class="operate"></view>
+  </view>
+  <view class="card-item {{detailStatusArr[0] || detailStatusArr[1] || detailStatusArr[5] || detailStatusArr[3] || detailStatusArr[6] ? 'top' : ''}}">
+    <view class="history-item-hd2">
+      <image src="{{detailData.imgUrl}}"></image>
+      <view class="cards-tag2">{{detailData.detailSubList.length}}件</view>
+    </view>
+    <view class="history-item-bd">
+      <view class="card-name">{{detailData.productSkuName}}</view>
+      <yepPrice wx:if="{{detailType == 1}}" value="{{detailData.price}}"></yepPrice>
+    </view>
+  </view>
+
+  <view class="other-message">
+    <view class="message-item">
+      <view class="msg-hd">兑换有效期</view>
+      <view class="msg-bd">{{detailData.detailSubList[0].startDate}} 至 {{detailData.detailSubList[0].endDate}}</view>
+    </view>
+    <view class="message-item">
+      <view class="msg-hd">状态</view>
+      <view class="msg-bd">{{totalStatus}}</view>
+    </view>
+  </view>
+
+  <view wx:if="{{detailData.detailSubList.length > 1}}" class="detail-cards">
+    <view class="detail-cards-list">
+      <view class="detail-cards-item" wx:for="{{detailData.detailSubList}}" wx:for-item="detailItem" wx:key="detailItem.id" wx:if="{{index < 5 || cardsListOpen}}">
+        <view class="cards-item-hd">
+          <view class="card-name">{{detailItem.productSkuName}}</view>
+          <yepPrice wx:if="{{detailType == 1}}" value="{{detailItem.price}}"></yepPrice>
+        </view>
+        <view class="cards-item-bd">
+          <view class="cards-item-bd-status">{{ detailItem.status == 1 ? '待赠送' : ( detailItem.status == 2 ? '待领取' : (detailItem.status == 3 ? '已领取' : (detailItem.status == 4 ? '已自己兑换' : (detailItem.status == 5 ? '已退款' : (detailItem.status == 6 ? '待兑换' : (detailItem.status == 7 ? '已兑换'
+            : (detailItem.status == 8 ? '已过期' : ''))))))) }}
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{detailData.detailSubList.length > 5 && !cardsListOpen}}" class="detail-cards-more" bindtap="openCards">展开查看更多
+      <view class="cards-icon-arr"></view>
+    </view>
+  </view>
+
+  <view wx:if="{{detailType == 1}}" class="other-message">
+    <view class="message-item">
+      <view class="msg-hd">订单号码</view>
+      <view class="msg-bd">{{detailData.orderId}}</view>
+    </view>
+    <view class="message-item">
+      <view class="msg-hd">下单时间</view>
+      <view class="msg-bd">{{detailData.orderDate}}</view>
+    </view>
+    <view class="message-item">
+      <view class="msg-hd">实付金额</view>
+      <view class="msg-bd">
+        <yepPrice value="{{detailData.totalMoney}}" status="common" symPos="normal" decPos="normal"></yepPrice>
+      </view>
+    </view>
+  </view>
+
+  <block wx:if="{{detailData.detailSubList.length == detailStatusArr[0]}}">
+    <view class="bind" bindtap="gotoExchange" data-self="1">自己兑换></view>
+    <view class="btn-fixed {{isIpx ? 'fix-ipx-btn-fixed' : ''}}">
+      <view class="btn" bindtap="sendCard" data-status="{{statusResult}}" data-orderid="{{detailData.orderId}}">立即赠送</view>
+    </view>
+  </block>
+
+  <block wx:if="{{detailStatusArr[5]}}">
+    <view class="btn-fixed {{isIpx ? 'fix-ipx-btn-fixed' : ''}}">
+      <view class="btn" bindtap="checkExchange">立即兑换</view>
+    </view>
+  </block>
+
+  <block wx:if="{{bshowPanel}}">
+    <yepMask isShowMask="true"></yepMask>
+    <view class="panel-box {{isIpx ? 'fix-ipx-btn-fixed' : ''}}">
+      <view class="panel-close" bindtap="closeTip"></view>
+      <view class="panel-title">选择兑换礼物</view>
+      <view class="panel-list">
+        <view class="panel-item" wx:for="{{exchangeList}}" wx:for-item="exchangeItem">
+          <view class="check-wrap" catchtap="checkAll" data-id="{{exchangeItem.id}}">
+            <view class="blist-hd-check {{exchangeItem.checked  ? '' : 'not-checked'}}"></view>
+          </view>
+          <view class="panel-item-info">{{exchangeItem.productSkuName}}</view>
+        </view>
+      </view>
+      <view class="panel-bottom">
+        <view class="panel-info-wrap">
+          <view class="check-wrap" catchtap="checkAll">
+            <view class="blist-hd-check {{exchangeChecked == exchangeList.length ? '' : 'not-checked'}}"></view>
+          </view>
+          <view>全选</view>
+          <view class="panel-info">
+            已选{{exchangeChecked}}件
+          </view>
+        </view>
+        <form bindsubmit="gotoMultiExchange" report-submit="true">
+          <button class="panel-btn {{exchangeChecked == 0 ? 'disabled' : ''}}" formType="submit">确定</button>
+        </form>
+      </view>
+    </view>
+  </block>
+</view>
+
+<include src="../../utils/toastFn/toastFn.wxml" /> -->
+
+<!--detail.wxml-->
+
+<view class="container wrap">
+  <view class="card-item">
+    <view class="history-item-hd">
+      <image src="{{detailData.cards[0].imgUrl}}"></image>
+      <block wx:if="{{detailData.cards.length > 1}}">
+        <view class="cards-border cards-border1"></view>
+        <view class="cards-border cards-border2"></view>
+        <view class="cards-tag">{{detailData.cards.length}}张</view>
+      </block>
+    </view>
+    <view class="history-item-bd">
+      <view class="card-name">{{detailData.themeName}}</view>
+      <view class="card-price"><view class="card-price-sign">¥</view>{{detailData.priceSum}}</view>
+    </view>
+  </view>
+  <view wx:if="{{detailData.cards.length > 1}}" class="detail-cards">
+
+    <!--单卡状态&多卡全为一种状态-->
+    <view class="detail-cards-st" wx:if="{{statusResult < 10}}">{{statusTxt[statusResult]}}</view>
+
+    <!--多卡：2种状态-->
+    <view class="detail-cards-st" wx:if="{{statusResult == 14}}">张</view>
+    <view class="detail-cards-st" wx:if="{{statusResult == 15}}">张</view>
+    <view class="detail-cards-st" wx:if="{{statusResult == 16}}">张</view>
+    <view class="detail-cards-st" wx:if="{{statusResult == 17}}">张</view>
+    <view class="detail-cards-st" wx:if="{{statusResult == 18}}">张</view>
+    <view class="detail-cards-st" wx:if="{{statusResult == 19}}">张</view>
+
+    <!--多卡：3种状态-->
+    <view class="detail-cards-st" wx:if="{{statusResult == 10}}">张</view>
+    <view class="detail-cards-st" wx:if="{{statusResult == 11}}">张</view>
+    <view class="detail-cards-st" wx:if="{{statusResult == 12}}">张</view>
+    <view class="detail-cards-st" wx:if="{{statusResult == 13}}">张</view>
+
+    <!--多卡：4种状态-->
+    <view class="detail-cards-st" wx:if="{{statusResult == 20}}">张</view>
+
+    <view class="detail-cards-list">
+      <view class="detail-cards-item" wx:for="{{detailData.cards}}" wx:key="{{item.id}}" wx:if="{{index < 5 || cardsListOpen}}" >
+        <view>
+          <view class="cards-item-hd">{{item.skuName}}</view>
+          <view class="cards-item-bd cards-item-bdst">
+            <view>卡号：{{item.id}}</view>
+            <view wx:if="{{multiStatus[index] == 1}}">已退回至卡包</view>
+          </view>
+        </view>
+        <view class="cards-item-r">
+          <view class="cards-item-hd cards-item-price">¥{{item.price}}</view>
+          <view wx:if="{{multiStatus[index] == 1}}" class="cards-item-btn" bindtap="sendCard" data-status="{{multiStatus[index]}}" data-cardid="{{item.weixinCardId}}" data-wxcode="{{item.weixinCode}}">再次赠送</view>
+          <view wx:else class="cards-item-bd">{{statusTxt[multiStatus[index]]}}</view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{detailData.cards.length > 5 && !cardsListOpen}}" class="detail-cards-more" bindtap="openCards">展开查看更多 <view class="cards-icon-arr"></view></view>
+  </view>
+  <view class="other-message">
+    <view class="message-item">
+      <view class="msg-hd">适用商品</view>
+      <view class="msg-bd">{{detailData.contentPO.content}}</view>
+    </view>
+    <view class="message-item">
+      <view class="msg-hd">有效时间</view>
+      <view class="msg-bd">{{detailData.cards[0].time}}</view>
+    </view>
+    <view wx:if="{{detailData.cards.length == 1}}" class="message-item">
+      <view class="msg-hd">卡号</view>
+      <view class="msg-bd">{{detailData.cards[0].id || '正在生成...'}}</view>
+    </view>
+
+    <view wx:if="{{detailData.cards.length == 1}}" class="message-item {{statusResult == 2 || statusResult == 3 ? 'li-received' : ''}}">
+      <view class="msg-hd">当前状态</view>
+      <view class="msg-bd" wx:if="{{statusResult == 0 || statusResult == 1 || statusResult == 4}}">{{statusTxt[statusResult]}}</view>
+      <view class="msg-bd msg-bd-received" wx:else>
+        <view class="received-txt">{{statusTxt[statusResult]}}</view>
+        <view class="received-txt"><image class="tip-warn" wx:if="{{statusResult == 2}}" src="/image/st-warn.png"></image>{{statusResult == 2 ? '24小时内未领取将退回至卡包' : detailData.cards[0].receiveDate}}</view>
+      </view>
+      <image class="msg-avatar" src="{{detailData.sharePO.receiveImageUrl}}" wx:if="{{statusResult == 3}}"></image>
+    </view>
+  </view>
+  <view class="other-message">
+    <view class="message-item">
+      <view class="msg-hd">订单号码</view>
+      <view class="msg-bd">{{detailData.cards[0].orderId}}</view>
+    </view>
+    <view class="message-item">
+      <view class="msg-hd">下单时间</view>
+      <view class="msg-bd">{{detailData.cards[0].orderDate}}</view>
+    </view>
+    <view class="message-item">
+      <view class="msg-hd">实付金额</view>
+      <view class="msg-bd">¥{{detailData.priceSum}}</view>
+    </view>
+  </view>
+  <view wx:if="{{statusResult == 0 || statusResult == 5}}" class="bind" bindtap="bindToJD">账户</view>
+
+  <view wx:if="{{statusResult == 0 || statusResult == 5}}" class="btn-fixed {{isIpx ? 'fix-ipx-btn-fixed' : ''}}">
+    <navigator class="btn" open-type="{{navigatePath ? 'navigate' : ''}}" target="miniProgram" app-id="{{navigateAppId}}" path="{{navigatePath}}" data-path="{{navigatePath}}"  data-status="{{statusResult}}" bindsuccess="openSucceed" bindfail="openFailed">立即赠送</navigator>
+  </view>
+
+  <view wx:if="{{statusResult == 1}}" class="btn-fixed {{isIpx ? 'fix-ipx-btn-fixed' : ''}}">
+    <view class="btn" bindtap="sendCard" data-status="{{statusResult}}" data-cardid="{{detailData.cards[0].weixinCardId}}" data-wxcode="{{detailData.cards[0].weixinCode}}">再次赠送</view>
+  </view>
+
+
+<!--   <view wx:if="{{statusResult == 0 || statusResult == 1 || statusResult == 5}}" class="btn-fixed {{isIpx ? 'fix-ipx-btn-fixed' : ''}}">
+    <view class="btn" bindtap="sendCard" data-status="{{statusResult}}" data-cardid="{{detailData.cards[0].weixinCardId}}" data-wxcode="{{detailData.cards[0].weixinCode}}">{{statusResult == 1 ? '再次赠送' : '立即赠送'}}</view>
+  </view> -->
+
+
+</view>
+
+<include src="../../utils/toastFn/toastFn.wxml" />

@@ -1,2 +1,142 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<!--theme.wxml-->
+<!--e卡小程序卡详情页-->
+<view wx:if="{{resCode}}" class="container">
+  <view class="empty">
+    <view class="icon {{resCode == 1 ? 'icon-empty1' : 'icon-empty2'}}"></view>
+    <view class="empty-txt">{{errorTxt[resCode]}}</view>
+  </view>
+</view>
+<view wx:else class="container wrap">
+  <view class="banner">
+    <image src="{{cardData.imgs[curPicIndex].content}}" mode="scaleToFill"></image>
+  </view>
+  <view class="card-choose">
+    <view class="choose-title">选择卡面</view>
+    <view class="card-choose-wrap">
+      <view class="choose-pic" wx:for="{{cardData.imgs}}" wx:key="*this" bindtap="chooseCard" data-index="{{index}}">
+        <image class="{{index == curPicIndex ? 'card-cur' : ''}}" src="{{item.content}}" mode="scaleToFill">
+          <view class="card-selected"></view>
+        </image>
+        <view wx:if="{{index != curPicIndex}}" class="card-mask"></view>
+      </view>
+    </view>
+  </view>
+  <view class="value-choose">
+    <view class="choose-title">
+      <view class="choose-title-lf">{{isShowLuck == true ? '金额及人数' : '选择面额及数量'}}</view>
+      <view class="choose-title-rt" wx:if="{{cardData.themeType != 2}}" bindtap='changeTheme'>
+        <image src="../../image/toggle.png" class='choose-title-rt-img'></image>
+        <view class='choose-title-rt-cont'>{{isShowLuck == true ? '送普通卡' : '送拼手气卡'}}</view>
+      </view>
+    </view>
+    <!--拼手气 1.e卡 2.京品卡 3.拼手气-->
+    <view wx:if="{{isShowLuck == true}}" class="luck-input-wrap {{trans_luck}}">
+      <view class="luck-input">
+        <view class="luck-input-hd">总金额</view>
+        <view class="luck-input-bd">
+          <input type="number" placeholder="1-1000" maxlength='4' placeholder-style="color: #ccc" bindinput="priceInput" bindblur="peoplePriceBlur" value="{{balanceValue}}" />
+          <view class="luck-unit">元</view>
+        </view>
+      </view>
+      <view class="luck-input">
+        <view class="luck-input-hd">赠送人数</view>
+        <view class="luck-input-bd">
+          <input type="number" placeholder="填写人数" maxlength='3' placeholder-style="color: #ccc;" bindinput="peopleInput" bindblur="peopleBlur" value="{{shareValue}}" />
+          <view class="luck-unit">人</view>
+        </view>
+      </view>
+      <view class="luck-tip">卡</view>
+    </view>
+    <!--京品卡、自定义E卡-->
+    <view wx:else class="value-choose-wrap {{trans_normal}}">
+      <!--自定义E卡-->
+      <block wx:if="{{cardData.themeType == 1}}">
+        <view class="value-item {{numData[0]?'choice-item':''}}">
+          <view class="value-item-top">
+            <view class="value-l-bd">
+              <block wx:if="{{inputCardPrice == 0}}">自定义面额</block>
+              <block wx:else> ¥{{inputCardPrice}}</block>
+              <view wx:if="{{inputCardPrice != 0}}" class='value-l-edit' bindtap="showDialog" data-type='input'></view>
+            </view>
+          </view>
+          <view class="value-item-bottom">
+            <block wx:if="{{numData[0]}}">
+              <form bindsubmit="cutValue" report-submit="true" data-index="0" data-price="{{inputCardPrice}}">
+                <button formType="submit" class="value-oprt-wrap">
+                  <view class="value-oprt-minus"></view>
+                </button>
+              </form>
+              <view class="value-num">{{numData[0]}}</view>
+            </block>
+            <form bindsubmit="addValue" report-submit="true" data-index="0" data-price="{{inputCardPrice}}">
+              <button formType="submit" class="value-oprt-wrap">
+                <view class="value-oprt-add"></view>
+              </button>
+            </form>
+          </view>
+        </view>
+      </block>
+      <!--京品卡-->
+      <view wx:for="{{cardData.skus}}" wx:for-index="index" wx:key="*this" class="value-item {{!!numData[index+1]?'choice-item':''}}">
+        <view class="value-item-top">
+          <view class="value-l-bd">¥{{item.contentExt1}}</view>
+        </view>
+        <view class="value-item-bottom">
+          <block wx:if="{{numData[index + 1]}}">
+            <form bindsubmit="cutValue" report-submit="true" data-index="{{index + 1}}" data-price="{{item.contentExt1}}">
+              <button formType="submit" class="value-oprt-wrap">
+                <view class="value-oprt-minus"></view>
+              </button>
+            </form>
+            <view class="value-num">{{numData[index + 1]}}</view>
+          </block>
+          <form bindsubmit="addValue" report-submit="true" data-index="{{index + 1}}" data-price="{{item.contentExt1}}">
+            <button formType="submit" class="value-oprt-wrap">
+              <view class="value-oprt-add"></view>
+            </button>
+          </form>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="other-message">
+    <view class="message-item">
+      <view class="msg-hd">适用商品</view>
+      <view class="msg-bd">{{cardData.remark.content}}</view>
+    </view>
+    <view class="message-item">
+      <view class="msg-hd">开具发票</view>
+      <view class="msg-bd">开发票请联系客服
+        <view class="link" bindtap="callServ">400-606-5500</view>
+      </view>
+    </view>
+    <view class="message-item">
+      <view class="msg-hd">赠送规则</view>
+      <view class="msg-bd">
+        <view class="link" bindtap="gotoRule">查看赠送规则</view>
+      </view>
+    </view>
+  </view>
+  <view class="info-btn">
+    <view class="btn-info">
+      <view>
+        <view wx:if="{{cardData.themeType != 3}}" class="btn-info-hd">
+          共
+          <block wx:if="{{isShowLuck === true}}">{{luckPeople}}</block>
+          <block wx:else>{{numSum}}</block>份
+        </view>
+        <view class="btn-info-bd">¥
+          <view class="emphaz">{{priceSum}}</view>
+        </view>
+      </view>
+    </view>
+    <form bindsubmit="buyCard" report-submit="true">
+      <button formType="submit" class="btn-box {{priceSum && (isShowLuck? luckPeople : true) ? 'btn-box-active' : ''}}">
+        送给朋友
+      </button>
+    </form>
+    <!-- <view class="btn-box {{priceSum && (isShowLuck? luckPeople : true) ? 'btn-box-active' : ''}}" bindtap="buyCard">送给朋友</view> -->
+  </view>
+  <dialog-box id="dialogBox" box-type="{{boxType}}" bind:getInputPrice="onInputPrice" bind:validPrice="validPrice"></dialog-box>
+</view>
+<include src="../../utils/toastFn/toastFn.wxml" />

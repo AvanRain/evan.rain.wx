@@ -1,0 +1,6 @@
+/* pages/home/home.wxss */
+
+page {
+  background-color: #ffffff;
+}
+

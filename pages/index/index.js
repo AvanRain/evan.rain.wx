@@ -181,5 +181,29 @@ Page({
   },
   selectTextTab:function(){
     console.log("abcdd")
+  },
+  gotoIndexDetail: function(e){
+    wx.navigateTo({
+      url: '../detail/detail?key=1&v=2',
+      success: (res) =>{
+        console.log(res)
+      },
+      fail: (res) =>{
+        console.log(res)
+      },
+      complete: (res) =>{
+        console.log(res)
+      }
+    })
+  },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '彩虹',
+      path: '/pages/index/index',
+      imageUrl: '/imgs/image/ab0.jpg'
+    }
   }
 })

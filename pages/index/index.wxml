@@ -20,7 +20,7 @@
   <view class="swiper-box-wrap">
     <swiper class="swiper-box" autoplay="true" interval="3000" bindchange="changeSwiper">
       <swiper-item class="swiper-item-wrap" wx:for="{{firstFocusData.list}}" wx:for-item="imageItem" wx:key="index">
-        <view class="swiper-item" bindtap="gotoPages" data-listtype="{{imageItem.comment[0]}}" data-cardtype="{{imageItem.comment[1]}}" data-id="{{imageItem.comment[2]}}">
+        <view class="swiper-item" bindtap="gotoIndexDetail" data-listtype="{{imageItem.comment[0]}}" data-cardtype="{{imageItem.comment[1]}}" data-id="{{imageItem.comment[2]}}">
           <image class="swiper-image" src="{{imageItem.pictureUrl}}"></image>
         </view>
       </swiper-item>
@@ -40,7 +40,7 @@
   </view>
   <swiper class="cards-swiper-wrap" autoplay="true" circular="true" previous-margin="180rpx" next-margin="180rpx" bindchange="changeCardSwiper">
     <swiper-item class="cards-swiper-item-wrap {{index == _currCardIdx ? 'cards-swiper-item-wrap-curr' : ''}}" wx:for="{{cardData.cardlist.list}}" wx:for-item="cardlistItem" wx:key="index">
-      <view class="cards-swiper-item {{index == _currCardIdx ? 'cards-swiper-item-curr' : ''}}" bindtap="gotoTheme" data-id="{{cardlistItem.comment[0]}}">
+      <view class="cards-swiper-item {{index == _currCardIdx ? 'cards-swiper-item-curr' : ''}}" bindtap="gotoIndexDetail" data-id="{{cardlistItem.comment[0]}}">
         <image class="cards-swiper-image" src="{{cardlistItem.pictureUrl}}" data-themeid="{{cardlistItem.comment[0]}}"></image>
         <view class="cards-card-title">{{cardlistItem.comment[1]}}</view>
       </view>
@@ -58,7 +58,7 @@
       yepc-tab-panel="myyep-tab-panel" yepc-tabs-bro="{{tabFixed ? 'myyep-tabs-bro' : ''}}" bindtabchange="selectTextTab" data-idx="1">
       <block wx:for="{{prodGroupList}}" wx:for-item="tabItem" wx:for-index="idx" wx:key="idx">
         <view class="card-list" style="{{tabText.currIdx == idx ? 'display:flex': 'display:none'}}">
-          <view class="card-item" wx:for="{{tabItem}}" wx:for-item="product" wx:for-index="idx" bindtap="gotoProduct" data-id="{{product.skuId}}" wx:key="idx">
+          <view class="card-item" wx:for="{{tabItem}}" wx:for-item="product" wx:for-index="idx" bindtap="gotoIndexDetail" data-id="{{product.skuId}}" wx:key="idx">
             <view class="card-image-wrap">
               <image class="card-image" src="{{product.image}}"></image>
             </view>

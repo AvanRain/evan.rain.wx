@@ -1,20 +1,38 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/detail/detail",
+    "pages/home/home",
+    "pages/daily/daily"
   ],
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "imgs/icon/home.png",
-      "selectedIconPath": "imgs/icon/home_sel.png"
-    },{
-      "pagePath": "pages/logs/logs",
-      "text": "日志",
-      "iconPath": "imgs/icon/index.png",
-      "selectedIconPath": "imgs/icon/index.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "imgs/icon/index.png",
+        "selectedIconPath": "imgs/icon/index_sel.png"
+      },
+      {
+        "pagePath": "pages/daily/daily",
+        "text": "生活",
+        "iconPath": "imgs/icon/his.png",
+        "selectedIconPath": "imgs/icon/his_sel.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath": "imgs/icon/index.png",
+        "selectedIconPath": "imgs/icon/index.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "我的",
+        "iconPath": "imgs/icon/home.png",
+        "selectedIconPath": "imgs/icon/home_sel.png"
+      }
+    ]
   },
   "window": {
     "backgroundTextStyle": "light",

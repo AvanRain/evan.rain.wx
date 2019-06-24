@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#FC352B",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "彩红",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true,
+  "usingComponents": {}
+}

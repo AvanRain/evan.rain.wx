@@ -6,5 +6,5 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
   },
-  globalRequestUrl: 'http://www.wanyus.com',
+  globalRequestUrl: 'https://www.wanyus.com',
 })

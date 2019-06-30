@@ -1,16 +1,11 @@
 /**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+
+.container{
+  font-family: "PingFang SC Regular","SimHei","Helvetica Neue","微软雅黑",Arial,"Droid Sans",sans-serif;
+}
 
 .container.wrap {
-  /*margin-bottom: 118rpx;*/
+  /* margin-bottom: 118rpx; */
   padding-bottom: 130rpx;
 }
 

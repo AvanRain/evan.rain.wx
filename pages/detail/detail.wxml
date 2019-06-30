@@ -119,11 +119,6 @@
   <view class="card-item">
     <view class="history-item-hd">
       <image src="{{detailData.cards[0].imgUrl}}"></image>
-      <block wx:if="{{detailData.cards.length > 1}}">
-        <view class="cards-border cards-border1"></view>
-        <view class="cards-border cards-border2"></view>
-        <view class="cards-tag">{{detailData.cards.length}}张</view>
-      </block>
     </view>
     <view class="history-item-bd">
       <view class="card-name">{{detailData.themeName}}</view>

@@ -5,5 +5,8 @@
   "backgroundColor": "#eeeeee",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "yepPrice": "../../components/price/price",
+    "tab": "../../components/tab/tab"
+  }
 }

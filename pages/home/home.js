@@ -1,14 +1,105 @@
+// pages/daily/daily.js
 
 const app = getApp();
 
-// pages/home/home.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    headerData: {},
+    firstFocusData: {
+      "list": [
+        {
+          "pictureUrl": "/imgs/image/aaaa.jpg",
+          "comment": ["彩虹1", "彩虹2", "彩虹3"]
+        },
+        {
+          "pictureUrl": "/imgs/image/aaaa.jpg",
+          "comment": ["彩虹1", "彩虹2", "彩虹3"]
+        }
+      ]
+    },
+    cardData: {
+      "list": [
+        {
+          "pictureUrl": "/imgs/image/aaaa.jpg",
+          "comment": ["彩虹1", "彩虹2", "彩虹3"]
+        },
+        {
+          "pictureUrl": "/imgs/image/aaaa.jpg",
+          "comment": ["彩虹1", "彩虹2", "彩虹3"]
+        },
+      ],
+      "cardlist": {
+        "list": [
+          {
+            "pictureUrl": "/imgs/image/aaaa.jpg",
+            "comment": ["彩虹1", "彩虹2", "彩虹3"]
+          },
+          {
+            "pictureUrl": "/imgs/image/aaaa.jpg",
+            "comment": ["彩虹1", "彩虹2", "彩虹3"]
+          },
+          {
+            "pictureUrl": "/imgs/image/aaaa.jpg",
+            "comment": ["彩虹1", "彩虹2", "彩虹3"]
+          },
+          {
+            "pictureUrl": "/imgs/image/aaaa.jpg",
+            "comment": ["彩虹1", "彩虹2", "彩虹3"]
+          },
+          {
+            "pictureUrl": "/imgs/image/aaaa.jpg",
+            "comment": ["彩虹1", "彩虹2", "彩虹3"]
+          }
+        ]
+      }
+    },
+    cateData: {
+      "list": [
+        {
+          "comment": ["彩虹1", "彩虹2", "彩虹3"]
+        }
+      ]
+    },
+    _currIdx: 0,
+    // 当前播放
+    _currCardIdx: 0,
+    // 分类list
+    tabText: {
+      currIdx: 0
+    },
+    categoryList: [{ "name": "ABA" }, { "name": "ABA" }, { "name": "ABA" }, { "name": "ABA" }],
+    prodGroupList: [
+      [
+        {
+          "skuId": "1233456",
+          "image": "/imgs/image/aaaa.jpg",
+          "pPrice": "123",
+          "name": "彩虹"
+        },
+        {
+          "skuId": "1233456",
+          "image": "/imgs/image/aaaa.jpg",
+          "pPrice": "123",
+          "name": "彩虹"
+        },
+        {
+          "skuId": "1233456",
+          "image": "/imgs/image/aaaa.jpg",
+          "pPrice": "123",
+          "name": "彩虹"
+        },
+        {
+          "skuId": "1233456",
+          "image": "/imgs/image/aaaa.jpg",
+          "pPrice": "123",
+          "name": "彩虹"
+        }
+      ],
+    ]
   },
 
   /**

@@ -1,5 +1,5 @@
-<!--index.wxml-->
-  <view class="head-wrap" style="background: url({{headerData.pictureUrl}}) 0 0 no-repeat;background-size: 750rpx 385rpx;">
+
+<view class="head-wrap" style="background: url({{headerData.pictureUrl}}) 0 0 no-repeat;background-size: 750rpx 385rpx;">
   <view class="head-title">{{headerData.comment}}</view>
   <view class="tip-box">
     <view class="tip">

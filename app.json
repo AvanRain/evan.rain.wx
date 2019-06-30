@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/index/index",
     "pages/logs/logs",
     "pages/detail/detail",
-    "pages/home/home",
     "pages/daily/daily"
   ],
   "tabBar": {
